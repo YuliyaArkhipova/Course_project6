@@ -1,0 +1,28 @@
+{% extends 'mailing/base.html'%}
+{% block content %}
+
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-6 fw-bold">Попытки рассылок</h1>
+</div>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">Рассылка</th>
+        <th scope="col">Время</th>
+        <th scope="col">Статус</th>
+        <th scope="col">Ответ сервера</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for log in object_list %}
+    <tr>
+        <td>{{ log.mailing }}</td>
+        <td>{{ log.time }}</td>
+        <td>{{ log.status }}</td>
+        <td>{{ log.server_response }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

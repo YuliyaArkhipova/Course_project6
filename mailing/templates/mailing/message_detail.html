@@ -1,0 +1,32 @@
+{% extends 'mailing/base.html' %}
+
+{% load my_tags %}
+{% block content %}
+
+<main>
+    <div class="card text-center">
+        <div class="card-header">
+            <h5>{{ object.title }}</h5>
+        </div>
+        <div class="card-body">
+            <p class="card-text">{{ object.message }}</p>
+        </div>
+    </div>
+</main>
+
+<div class="card-footer">
+    <div class="btn-group">
+        <a href="{% url 'mailing:message_update' object.pk %}"
+           class="btn btn-md btn-block btn-outline-success"> Редактировать </a>
+    </div>
+    <div class="btn-group">
+        <a href="{% url 'mailing:message_delete' object.pk %}"
+           class="btn btn-md btn-block btn-outline-danger"> Удалить </a>
+    </div>
+    <div class="btn-group">
+        <a href="{% url 'mailing:message_list' %}"
+           class="btn btn-md btn-block btn-outline-warning"> Назад </a>
+    </div>
+</div>
+{% endblock %}
+
