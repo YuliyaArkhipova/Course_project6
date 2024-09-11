@@ -1,0 +1,38 @@
+{% extends 'mailing/base.html' %}
+
+{% load my_tags %}
+{% block content %}
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h4 class="display-4">{{ object.name }}</h4>
+</div>
+<main>
+    <div class="card text-center">
+        <div class="card-header">
+            <h5>Информация о рассылке</h5>
+        </div>
+        <div class="card-body">
+            <p class="card-text">Статус рассылки: {{ object.status }}</p>
+            <p class="card-text">Периодичность рассылки: {{ object.periodicity }}</p>
+            <p class="card-text">Дата начала: {{ object.start_date }}</p>
+            <p class="card-text">Дата окончания: {{ object.end_date }}</p>
+            <p class="card-text">Время следующей отправки: {{ object.next_send_time }}</p>
+            <p class="card-text">Cообщение: {{ object.message }}</p>
+        </div>
+    </div>
+</main>
+
+<div class="card-footer">
+    <div class="btn-group">
+        <a href="{% url 'mailing:mailing_update' object.pk %}"
+           class="btn btn-md btn-block btn-outline-success"> Редактировать </a>
+    </div>
+    <div class="btn-group">
+        <a href="{% url 'mailing:mailing_delete' object.pk %}"
+           class="btn btn-md btn-block btn-outline-danger"> Удалить </a>
+    </div>
+    <div class="btn-group">
+        <a href="{% url 'mailing:mailing_list' %}"
+           class="btn btn-md btn-block btn-outline-warning"> Назад </a>
+    </div>
+</div>
+{% endblock %}
